@@ -6,6 +6,7 @@ const ongRoutes = require('./routes/ong');
 
 const app = express();
 const port = 3000; // Ou qualquer porta que preferir
+app.use(express.static(__dirname + '/static', { dotfiles: 'allow' }))
 
 // Conectar ao MongoDB
 mongoose.connect('mongodb://127.0.0.1:27017/ong', {
