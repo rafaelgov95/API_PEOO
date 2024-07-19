@@ -203,7 +203,7 @@ const dados = [
 ];
 
 // Conectar ao MongoDB
-mongoose.connect('mongodb://localhost:27017/ong', {
+mongoose.connect('mongodb://127.0.0.1:27017/ong', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(async () => {
