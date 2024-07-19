@@ -5,10 +5,10 @@ const bodyParser = require('body-parser');
 const ongRoutes = require('./routes/ong');
 
 const app = express();
-const port = 3000; // Ou qualquer porta que preferir
+const port = 80; // Ou qualquer porta que preferir
 
 // Conectar ao MongoDB
-mongoose.connect('mongodb://localhost:27017/ong', {
+mongoose.connect('mongodb://127.0.0.1:27017/ong', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }).then(() => {
