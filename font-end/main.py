@@ -12,8 +12,7 @@ def login():
     senha='12345'
     json_= {'nome':nome,'senha':senha}
     response = api_login(json_)
-    print(response.status)
-    return response.content
+    print( response.content)
 
 
 token = {'x-auth-token':''}

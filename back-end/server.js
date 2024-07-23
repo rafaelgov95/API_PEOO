@@ -61,7 +61,7 @@ app.post('/login', async (req, res) => {
     res.json({ token });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: 'Erro no servidor' });
+    res.status(500).json({ message: 'Erro no servidor: '+err });
   }
 });
 
