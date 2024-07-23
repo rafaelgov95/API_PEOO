@@ -1,6 +1,6 @@
 // scripts/populate_db.js
 const mongoose = require('mongoose');
-const User = require('../models/Ong');
+const User = require('../models/User');
 
 // Dados iniciais
 const dados = [
