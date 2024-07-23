@@ -1,16 +1,29 @@
 import requests
 import json
-url = 'https://api.viana.dev/ongs'
+url = 'https://api.viana.dev/'
+
+def api_create_login(json_dict):
+    json_= json.dumps(json_dict)
+    print(json_)
+    headers = {'Content-type': 'application/json'}
+    response = requests.post(f'{url}/register',data=json_,headers=headers)
+    return response
+
+def api_login(json_dict):
+    json_= json.dumps(json_dict)
+    headers = {'Content-type': 'application/json'}
+    response = requests.post(f'{url}/login',data=json_,headers=headers)
+    return response
 
 def api_create(json_dict):
     json_= json.dumps(json_dict)
     headers = {'Content-type': 'application/json'}
-    response = requests.post(url,data=json_,headers=headers)
+    response = requests.post(f'{url}/ongs',data=json_,headers=headers)
     return response
 
 def api_read():
     headers = {'Content-type': 'application/json'}
-    response = requests.get(url,headers=headers).json()
+    response = requests.get(f'{url}/ongs',headers=headers).json()
     return response
 
 def api_update(ong):

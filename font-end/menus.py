@@ -1,7 +1,8 @@
 def menu_principal():
     string = f"""
-                       1 - Criar ONG
-                       2 - Listar ONGs
+                       1 - Logar Usuário
+                       2 - Registrar Usuário
+                       3 - Listar ONGs
                        0 - Sair
               """
     return string
