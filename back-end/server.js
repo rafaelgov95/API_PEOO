@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const ongRoutes = require('./routes/ong');
 const User = require('./models/User');
+const bcrypt = require('bcryptjs');
 
 const app = express();
 const port = 3000; 
