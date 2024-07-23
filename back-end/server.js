@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const ongRoutes = require('./routes/ong');
 const User = require('./models/User');
 const bcrypt = require('bcryptjs');
-
+const jwt = require('jsonwebtoken');
 const app = express();
 const port = 3000; 
 app.use(express.static(__dirname + '/static', { dotfiles: 'allow' }))
