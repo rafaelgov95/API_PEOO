@@ -6,26 +6,23 @@ def menu_principal():
               """
     return string
 
-def menu_editar_ong():
+def menu_ong():
     string = f"""
                
-                    X
+                    1 - Editar ONG
+                    2 - Listar Projetos
+                    3 - Excluir ONG
+                    0 - Sair
 
               """
     return string
 
-def menu_listar_ongs():
+def menu_projeto():
     string = f"""
                
-                    X
-
-              """
-    return string
-
-def menu_criar_ong():
-    string = f"""
-               
-                    X
+                    1 - Editar Projeto
+                    2 - Excluir Projeto
+                    0 - Sair
 
               """
     return string
