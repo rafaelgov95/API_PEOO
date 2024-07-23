@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Ong = require('../models/Ong'); // Assumindo que você tenha um modelo Ong definido
+const Ong = require('../models/Ong'); 
+const auth = require('../middleware/auth');
 
 // Rota para obter todas as ONGs
 router.get('/', async (req, res) => {
@@ -12,13 +13,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Rota para obter uma ONG específica
-router.get('/:id', getOng, (req, res) => {
-  res.json(res.ong);
-});
 
 // Rota para adicionar uma nova ONG
-router.post('/', async (req, res) => {
+router.post('/',auth, async (req, res) => {
   const ong = new Ong({
     nome: req.body.nome,
     projetos: req.body.projetos // Se seu modelo Ong tem um array de projetos
@@ -33,7 +30,7 @@ router.post('/', async (req, res) => {
 });
 
 // Rota para atualizar uma ONG
-router.put('/:id', async (req, res) => {
+router.put('/:id',auth, async (req, res) => {
   const updates = {
     nome: req.body.nome,
     projetos: req.body.projetos
@@ -63,7 +60,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Rota para deletar uma ONG
-router.delete('/:id', getOng, async (req, res) => {
+router.delete('/:id', auth,getOng, async (req, res) => {
   try {
     await res.ong.remove();
     res.json({ message: 'ONG deletada' });
