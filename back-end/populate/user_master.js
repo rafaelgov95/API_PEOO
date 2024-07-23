@@ -1,6 +1,6 @@
 // scripts/populate_db.js
 const mongoose = require('mongoose');
-const Ong = require('../models/Ong');
+const User = require('../models/Ong');
 
 // Dados iniciais
 const dados = [
@@ -17,10 +17,10 @@ mongoose.connect('mongodb://127.0.0.1:27017/ong', {
   console.log('Conectado ao MongoDB');
 
   // Limpar a coleção antes de inserir dados
-  await Ong.deleteMany({});
+  await User.deleteMany({});
 
   // Inserir os dados
-  await Ong.insertMany(dados);
+  await User.insertMany(dados);
   console.log('Dados inseridos com sucesso');
 
   // Fechar a conexão
