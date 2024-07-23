@@ -8,6 +8,9 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const app = express();
 const port = 3000; 
+
+SECRET_KEY = 'jsonwebtoken_password'
+
 app.use(express.static(__dirname + '/static', { dotfiles: 'allow' }))
 
 // Conectar ao MongoDB
