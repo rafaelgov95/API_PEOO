@@ -3,7 +3,19 @@ const router = express.Router();
 const Ong = require('../models/Ong'); 
 const auth = require('../middleware/auth');
 
-// Rota para obter todas as ONGs
+const getOng = async (req, res, next) => {
+  try {
+    const ong = await Ong.findById(req.params.id);
+    if (!ong) {
+      return res.status(404).json({ message: 'ONG não encontrada' });
+    }
+    res.ong = ong;
+    next();
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 router.get('/', async (req, res) => {
   try {
     const ongs = await Ong.find();
@@ -68,18 +80,5 @@ router.delete('/:id', auth,getOng, async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
-const getOng = async (req, res, next) => {
-  try {
-    const ong = await Ong.findById(req.params.id);
-    if (!ong) {
-      return res.status(404).json({ message: 'ONG não encontrada' });
-    }
-    res.ong = ong;
-    next();
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
 
 module.exports = router;
