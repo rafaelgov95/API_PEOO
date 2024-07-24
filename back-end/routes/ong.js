@@ -41,29 +41,19 @@ router.post('/',auth, async (req, res) => {
   }
 });
 
-// Rota para atualizar uma ONG
 router.put('/:id',auth, async (req, res) => {
   const updates = {
     nome: req.body.nome,
     projetos: req.body.projetos
   };
-
   try {
     const ong = await Ong.findById(req.params.id);
     if (!ong) {
       return res.status(404).json({ message: 'ONG não encontrada' });
     }
-
-    // Atualiza os campos da ONG com os dados enviados
     ong.nome = updates.nome;
     ong.projetos = updates.projetos;
 
-    // Remove projetos que não existem mais
-    ong.projetos = ong.projetos.filter(projeto => {
-      return updates.projetos.some(updatedProjeto => updatedProjeto._id === projeto._id);
-    });
-
-    // Salva a ONG atualizada
     const updatedOng = await ong.save();
     res.json(updatedOng);
   } catch (err) {

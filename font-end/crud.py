@@ -29,6 +29,7 @@ def listar_ongs():
         ong = ONG(_id=ong_['_id'],nome=ong_['nome'])
         print(f'{index} : Nome: {ong_['nome']}')
         for p in ong_['projetos']:
+            print(p)
             projeto = Projeto(p['_id'],p['nome'],p['descricao'],
                               p['responsavel'],p['status'])
             ong.adicionar_projeto(projeto)

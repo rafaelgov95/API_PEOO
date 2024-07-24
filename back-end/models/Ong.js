@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ProjetoSchema = new Schema({
-  _id:String,
   nome: String,
   descricao: String,
   responsavel: String,
@@ -11,7 +10,6 @@ const ProjetoSchema = new Schema({
 });
 
 const OngSchema = new Schema({
-  _id:String,
   nome: String,
   projetos: [ProjetoSchema]
 });
