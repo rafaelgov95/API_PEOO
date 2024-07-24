@@ -1,6 +1,6 @@
 from classes import *
 from api_client import *
-
+from menus import *
 
 def create_ong(token):
     ong = ONG('salve os bichos')
@@ -9,18 +9,10 @@ def create_ong(token):
     print(api_create(ong.to_json(),token))
 
 
-def editar_ong(ong:ONG,token):
-    print(ong.getNome())
-    ong.setNome(input("Digite novo nome: "))
-    print(ong.to_json())
-
-    result = api_update(ong,token)
-    print(result.content)
-    print(f'Novo Nome: {ong.getNome()}')
-
-def excluir_ong(ong:ONG,token):
-    print(ong.to_json())
-    api_delete(ong._id,token)
+def listar_projetos(projetos):
+    for index,p in zip(range(len(projetos)),projetos):
+        print(f'[{index}]: {p.nome}')
+    
 
 def listar_ongs():
     ongs = []
@@ -29,7 +21,6 @@ def listar_ongs():
         ong = ONG(_id=ong_['_id'],nome=ong_['nome'])
         print(f'{index} : Nome: {ong_['nome']}')
         for p in ong_['projetos']:
-            print(p)
             projeto = Projeto(p['_id'],p['nome'],p['descricao'],
                               p['responsavel'],p['status'])
             ong.adicionar_projeto(projeto)

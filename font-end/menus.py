@@ -34,19 +34,40 @@ def menu_ong():
     string = f"""
                
                     1 - Editar ONG
-                    2 - Excluir ONG
+                    2 - Editar Projetos ONG
+                    3 - Save ONG
+                    4 - Excluir ONG
                     0 - Sair
 
               """
     return string
 
+
+def menu_editar_ong():
+    clear()
+    string = f"""
+                    1 - Editar Nome
+                    0 - Sair
+              """
+    return string
+
+
 def menu_projeto():
     clear()
     string = f"""
-               
                     1 - Editar Projeto
                     2 - Excluir Projeto
                     0 - Sair
+              """
+    return string
 
+def menu_editar_projeto():
+    clear()
+    string = f"""
+                    1 - Editar Nome
+                    2 - Editar Descricao
+                    3 - Editar Responsavel
+                    4 - Editar Status
+                    0 - Sair
               """
     return string
