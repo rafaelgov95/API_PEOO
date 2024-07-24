@@ -1,36 +1,44 @@
-from operacoes import *
 from menus import *
+from crud import *
+from login import *
 
-def create_user_login():
-    nome='rafael.viana'
-    senha='12345'
-    json_= {'nome':nome,'senha':senha}
-    print(api_create_login(json_))
+def fluxo_principal():
+    close = True
+    while close:        
+        print(menu_principal())
+        op = input("Escolha uma opção: ")
+        if op == '1': 
+            jwt = login()
+            token = jwt
+            if token != None:
+               fluxo_logado(token)
+        elif op == '2':
+            create_login()
+        elif op == '3':
+            listar_ongs()
+            menu_ong()
+        elif op == '0':
+            close=False
+        else:
+            print("Opção Inválida")
 
-def login():
-    nome='rafael.viana'
-    senha='12345'
-    json_= {'nome':nome,'senha':senha}
-    response = api_login(json_)
-    print( response.content)
+def fluxo_logado(token):
+    close = True
+    print(menu_principal(True))
+    while close:        
+        op = input("Escolha uma opção: ")
+        if op == '1': 
+           listar_ongs()
+           print(menu_principal(True,False))
+        elif op == '2': 
+           create_ong(token)
+        elif op == '3': 
+           editar_ong(token)
+        elif op == '4': 
+           excluir_ong(token)
+        elif op == '0': 
+           close = False
+        else:
+            print("Opção Inválida")
 
-
-token = {'x-auth-token':''}
-close = True
-while close:
-    ongs = api_read()
-    print(menu_principal())
-    print('Token: ',token['x-auth-token'])
-    op = input("Escolha uma opção: ")
-    if op == '1': 
-        jwt=login()
-        token['x-auth-token']=jwt
-    elif op == '2':
-        create_user_login()
-    elif op == '3':
-        listar_ongs(ongs)
-        menu_ong()
-    elif op == '0':
-        close=False
-    else:
-        print("Opção Inválida")
+fluxo_principal()

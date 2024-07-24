@@ -1,5 +1,6 @@
 import requests
 import json
+
 url = 'https://api.viana.dev/'
 
 def api_create_login(json_dict):
@@ -15,10 +16,12 @@ def api_login(json_dict):
     response = requests.post(f'{url}/login',data=json_,headers=headers)
     return response
 
-def api_create(json_dict):
+def api_create(json_dict,token):
     json_= json.dumps(json_dict)
-    headers = {'Content-type': 'application/json'}
+    headers = {'Content-type': 'application/json',
+               'x-auth-token':token}
     response = requests.post(f'{url}/ongs',data=json_,headers=headers)
+    print(response.content)
     return response
 
 def api_read():
@@ -26,15 +29,15 @@ def api_read():
     response = requests.get(f'{url}/ongs',headers=headers).json()
     return response
 
-def api_update(ong):
+def api_update(ong,token):
     json_= json.dumps(ong)
-    headers = {'Content-type': 'application/json'}
+    headers = {'Content-type': 'application/json',
+               'x-auth-token':token}
     response = requests.put(url,data=json_,headers=headers).json()
     return response
 
-def api_delete(id):
-    headers = {'Content-type': 'application/json'}
+def api_delete(id,token):
+    headers = {'Content-type': 'application/json',
+               'x-auth-token':token}
     response = requests.delete(f'{url}/{id}',headers=headers).json()
     return response
-
-
