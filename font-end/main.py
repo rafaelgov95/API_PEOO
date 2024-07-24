@@ -30,7 +30,7 @@ def fluxo_logado(token):
         op = input("Escolha uma opção: ")
         if op == '1': 
            ongs = listar_ongs()
-           index_ong = int(input("Informe o nome index da ong:"))
+           index_ong = int(input("Informe [index]:"))
            fluxo_ong(ongs[index_ong],token)
         elif op == '2':            
            create_ong(token)

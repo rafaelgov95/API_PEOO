@@ -30,10 +30,10 @@ def api_read():
     return response
 
 def api_update(ong,token):
-    json_= json.dumps(ong)
+    json_= json.dumps(ong.to_json())
     headers = {'Content-type': 'application/json',
                'x-auth-token':token}
-    response = requests.put(url,data=json_,headers=headers).json()
+    response = requests.put(f'{url}/ongs/{ong.getId()}',data=json_,headers=headers)
     return response
 
 def api_delete(id,token):

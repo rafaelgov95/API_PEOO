@@ -10,7 +10,13 @@ def create_ong(token):
 
 
 def editar_ong(ong:ONG,token):
+    print(ong.getNome())
+    ong.setNome(input("Digite novo nome: "))
     print(ong.to_json())
+
+    result = api_update(ong,token)
+    print(result.content)
+    print(f'Novo Nome: {ong.getNome()}')
 
 def excluir_ong(ong:ONG,token):
     print(ong.to_json())
