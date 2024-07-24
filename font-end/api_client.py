@@ -39,5 +39,6 @@ def api_update(ong,token):
 def api_delete(id,token):
     headers = {'Content-type': 'application/json',
                'x-auth-token':token}
-    response = requests.delete(f'{url}/{id}',headers=headers).json()
+    response = requests.delete(f'{url}/ongs/{id}',headers=headers)
+    print(response.content)
     return response

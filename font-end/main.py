@@ -22,23 +22,37 @@ def fluxo_principal():
         else:
             print("Opção Inválida")
 
+
 def fluxo_logado(token):
     close = True
-    print(menu_principal(True))
-    while close:        
+    while close:       
+        print(menu_principal(True))
         op = input("Escolha uma opção: ")
         if op == '1': 
-           listar_ongs()
-           print(menu_principal(True,False))
-        elif op == '2': 
+           ongs = listar_ongs()
+           index_ong = int(input("Informe o nome index da ong:"))
+           fluxo_ong(ongs[index_ong],token)
+        elif op == '2':            
            create_ong(token)
-        elif op == '3': 
-           editar_ong(token)
-        elif op == '4': 
-           excluir_ong(token)
         elif op == '0': 
            close = False
         else:
             print("Opção Inválida")
+
+
+def fluxo_ong(ong:ONG, token):
+    close = True
+    while close: 
+        print(menu_ong())
+        op = input("Escolha uma opção: ")
+        if op == '1': 
+           editar_ong(ong,token)
+        elif op == '2': 
+           excluir_ong(ong,token)
+        elif op == '0': 
+           close = False
+        else:
+            print("Opção Inválida")
+
 
 fluxo_principal()

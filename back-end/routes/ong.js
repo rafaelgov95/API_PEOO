@@ -62,27 +62,24 @@ router.put('/:id',auth, async (req, res) => {
 // Rota para deletar uma ONG
 router.delete('/:id', auth,getOng, async (req, res) => {
   try {
-    await res.ong.remove();
+    await res.ong.deleteOne(); // Usa deleteOne() para remover a ONG do banco de dados
     res.json({ message: 'ONG deletada' });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// Middleware para encontrar uma ONG pelo ID
-async function getOng(req, res, next) {
-  let ong;
+const getOng = async (req, res, next) => {
   try {
-    ong = await Ong.findById(req.params.id);
-    if (ong == null) {
+    const ong = await Ong.findById(req.params.id);
+    if (!ong) {
       return res.status(404).json({ message: 'ONG não encontrada' });
     }
+    res.ong = ong;
+    next();
   } catch (err) {
-    return res.status(500).json({ message: err.message });
+    res.status(500).json({ message: err.message });
   }
-
-  res.ong = ong;
-  next();
-}
+};
 
 module.exports = router;

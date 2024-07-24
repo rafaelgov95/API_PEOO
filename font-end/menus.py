@@ -25,20 +25,16 @@ def menu_principal(logado=False,limpar=True):
         string = f"""
                         1 - Listar ONGs
                         2 - Criar ONG
-                        3 - Editar ONG
-                        4 - Excluir ONG
                         0 - Sair
                 """
         return string
 
 
 def menu_ong():
-    clear()
     string = f"""
                
                     1 - Editar ONG
-                    2 - Listar Projetos
-                    3 - Excluir ONG
+                    2 - Excluir ONG
                     0 - Sair
 
               """

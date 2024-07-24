@@ -1,6 +1,6 @@
 class Projeto:
-    def __init__(self, nome, descricao, responsavel, status):
-        self._id = ''
+    def __init__(self, _id,nome, descricao, responsavel, status):
+        self._id = _id
         self.nome = nome
         self.descricao = descricao
         self.responsavel = responsavel
@@ -17,8 +17,8 @@ class Projeto:
         return json_
     
 class ONG:
-    def __init__(self, nome):
-        self._id = ''
+    def __init__(self,_id, nome):
+        self._id = _id
         self.nome = nome
         self.projetos=[]
     def buscar_projetos(self, tit):
