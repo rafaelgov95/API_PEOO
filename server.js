@@ -24,11 +24,11 @@ mongoose.connect('mongodb://127.0.0.1:27017/ong', {
 
 app.use(bodyParser.json());
 
-app.get('/register', async (req, res) => {
-  return res.status(200).json({ message: 'API developer RGOV' });
 
-});
+app.get('/', (req, res) => {
+  res.send('Hello World!')
 
+})
 
 app.post('/register', async (req, res) => {
   const { nome, senha } = req.body;
