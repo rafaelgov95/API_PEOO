@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 
 
 app.get('/', (req, res) => {
-  res.json({ message: "Bem-vindo à API",
+  res.json({ message: "Bem-vindo à API ONGs Senac 145",
     email:"contato@viana.dev"
   })
 
